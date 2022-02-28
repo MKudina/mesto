@@ -6,6 +6,10 @@
 
 @import url(../fonts/fonts.css);
 
+/* Подключение блока background-page */
+
+@import url(../blocks/background-page/background-page.css);
+
 /* Подключение блока page */
 
 @import url(../blocks/page/page.css);
