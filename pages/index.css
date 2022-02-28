@@ -2,6 +2,10 @@
 
 @import url(../vendor/normalize.css);
 
+/* Подключение стиля шрифтов */
+
+@import url(../fonts/fonts.css);
+
 /* Подключение блока page */
 
 @import url(../blocks/page/page.css);
