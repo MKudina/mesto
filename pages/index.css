@@ -25,3 +25,12 @@
 @import url(../blocks/profile/__about/profile__about.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
+
+/* Подключение блока cards */
+
+@import url(../blocks/cards/cards.css);
+@import url(../blocks/cards/__card/cards__card.css);
+@import url(../blocks/cards/__image/cards__image.css);
+@import url(../blocks/cards/card-about/cards__card-about.css);
+@import url(../blocks/cards/__name/cards__name.css);
+@import url(../blocks/cards/__like/cards__like.css);
