@@ -7,5 +7,10 @@
     background-image: url(../../../images/like.svg);
     background-size: contain;
     background-color: white;
-    
+    cursor: pointer;
+    transition: opacity .5s linear;
+}
+
+.cards__like:hover {
+    opacity: 0.3;
 }

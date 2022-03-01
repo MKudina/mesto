@@ -9,4 +9,10 @@
     background-repeat: no-repeat;
     background-color: black;
     background-position: center;
+    cursor: pointer;
+    transition: opacity .5s linear;
+}
+
+.profile__add-button:hover {
+    opacity: 0.5;
 }
