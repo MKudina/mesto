@@ -5,3 +5,10 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+@media screen and (max-width:767px) {
+    .profile__info {
+       justify-content: center;
+       margin: 0;
+    }    
+}
