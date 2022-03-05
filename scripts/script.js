@@ -18,9 +18,6 @@ let inputName = document.querySelector('.popup__input-name');
 
 let inputAbout = document.querySelector('.popup__input-about');
 
-console.log(inputName); 
-console.log(inputAbout); 
-
 inputName.hasAttribute('value');
 
 function formSubmitHandler (evn) {
