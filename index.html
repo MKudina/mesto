@@ -6,12 +6,11 @@
   <title>Mesto</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
-<body class="background-page">
+<body>
   <div class="page">
 
     <header class="header">
       <img src="./images/logoWhite.svg" class="header__logo" alt="Лого">
-      <div class="header__border"></div>
     </header>
 
     <main class="content">
@@ -20,64 +19,54 @@
         <img src="./images/avatar.jpg" class="profile__avatar" alt="Аватар">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button"></button>
+          <button type="button" class="profile__edit-button" aria-label="Изменить профиль"></button>
           <p class="profile__about">Исследователь океана</p>
         </div>
-        <button class="profile__add-button"></button>
-      </section>
-
-      <section class="popup">
-        <button class="popup__close-button"></button>
-        <form class="popup__container">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" class="popup__input-name" value="Жак-Ив Кусто">
-          <input type="text" class="popup__input-about" value="Исследователь океана">
-          <input type="submit" class="popup__submit" value="Сохранить">
-        </form>
+        <button type="button" class="profile__add-button" aria-label="Добавить карточку"></button>
       </section>
 
       <section>
         <ul class="cards">
-          <li class="cards__card">
-            <img src="./images/kirill-pershin-1088404-unsplash.jpg" class="cards__image" alt="Картинка">
-            <div class="cards__card-about">
-              <h2 class="cards__name">Карачаевск</h2>
-              <button class="cards__like"></button>
+          <li class="card">
+            <img src="./images/kirill-pershin-1088404-unsplash.jpg" class="card__image" alt="Город Карачаевск">
+            <div class="card__about">
+              <h2 class="card__name">Карачаевск</h2>
+              <button type="button" class="card__like" aria-label="Поставить лайк"></button>
             </div>
           </li>
-          <li class="cards__card">
-            <img src="./images/kirill-pershin-1404681-unsplash.png" class="cards__image" alt="Картинка">
-            <div class="cards__card-about">
-              <h2 class="cards__name">Гора Эльбрус</h2>
-              <button class="cards__like"></button>
+          <li class="card">
+            <img src="./images/kirill-pershin-1404681-unsplash.png" class="card__image" alt="Гора Эльбрус">
+            <div class="card__about">
+              <h2 class="card__name">Гора Эльбрус</h2>
+              <button type="button" class="card__like" aria-label="Поставить лайк"></button>
             </div>
           </li>
-          <li class="cards__card">
-            <img src="./images/kirill-pershin-1556355-unsplash.png" class="cards__image" alt="Картинка">
-            <div class="cards__card-about">
-              <h2 class="cards__name">Домбай</h2>
-              <button class="cards__like"></button>
+          <li class="card">
+            <img src="./images/kirill-pershin-1556355-unsplash.png" class="card__image" alt="Домбай">
+            <div class="card__about">
+              <h2 class="card__name">Домбай</h2>
+              <button type="button" class="card__like" aria-label="Поставить лайк"></button>
             </div>
           </li>
-          <li class="cards__card">
-            <img src="./images/kirill-pershin-1404681-unsplash.png" class="cards__image" alt="Картинка">
-            <div class="cards__card-about">
-              <h2 class="cards__name">Гора Эльбрус</h2>
-              <button class="cards__like"></button>
+          <li class="card">
+            <img src="./images/kirill-pershin-1404681-unsplash.png" class="card__image" alt="Гора Эльбрус">
+            <div class="card__about">
+              <h2 class="card__name">Гора Эльбрус</h2>
+              <button type="button" class="card__like" aria-label="Поставить лайк"></button>
             </div>
           </li>
-          <li class="cards__card">
-            <img src="./images/kirill-pershin-1556355-unsplash.png" class="cards__image" alt="Картинка">
-            <div class="cards__card-about">
-              <h2 class="cards__name">Домбай</h2>
-              <button class="cards__like"></button>
+          <li class="card">
+            <img src="./images/kirill-pershin-1556355-unsplash.png" class="card__image" alt="Домбай">
+            <div class="card__about">
+              <h2 class="card__name">Домбай</h2>
+              <button type="button" class="card__like" aria-label="Поставить лайк"></button>
             </div>
           </li>
-          <li class="cards__card">
-            <img src="./images/kirill-pershin-1088404-unsplash.png" class="cards__image" alt="Картинка">
-            <div class="cards__card-about">
-              <h2 class="cards__name">Карачаевск-Черкесская республика</h2>
-              <button class="cards__like"></button>
+          <li class="card">
+            <img src="./images/kirill-pershin-1088404-unsplash.png" class="card__image" alt="Город Карачаевск">
+            <div class="card__about">
+              <h2 class="card__name">Карачаево-Черкесская республика</h2>
+              <button type="button" class="card__like" aria-label="Поставить лайк"></button>
             </div>
           </li>
         </ul>
@@ -85,8 +74,21 @@
     </main>
 
     <footer class="footer">
-      <h2 class="footer__copyright">© 2020 Mesto Russia</h2>
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+
+    <div class="popup">
+        <button class="popup__close-button" aria-label="Закрыть"></button>
+        <div class="popup__container">
+          
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="popup__form">
+            <input type="text" class="popup__input popup__input_type_name" name="name" required>
+            <input type="text" class="popup__input popup__input_type_about" name="about" required>
+            <button type="submit" class="popup__submit" aria-label="Сохранить">Сохранить</button>
+          </form>
+        </div>
+    </div>
 
   </div>
 

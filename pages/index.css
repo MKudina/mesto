@@ -4,11 +4,7 @@
 
 /* Подключение стиля шрифтов */
 
-@import url(../fonts/fonts.css);
-
-/* Подключение блока background-page */
-
-@import url(../blocks/background-page/background-page.css);
+@import url(../vendor/fonts/fonts.css);
 
 /* Подключение блока page */
 
@@ -18,7 +14,6 @@
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
-@import url(../blocks/header/__border/header__border.css);
 
 /* Подключение блока profile */
 
@@ -37,19 +32,21 @@
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__title/popup__title.css);
-@import url(../blocks/popup/__input-name/popup__input-name.css);
-@import url(../blocks/popup/__input-about/popup__input-about.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_name.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_about.css);
 @import url(../blocks/popup/__submit/popup__submit.css);
 
 /* Подключение блока cards */
 
 @import url(../blocks/cards/cards.css);
-@import url(../blocks/cards/__card/cards__card.css);
-@import url(../blocks/cards/__image/cards__image.css);
-@import url(../blocks/cards/card-about/cards__card-about.css);
-@import url(../blocks/cards/__name/cards__name.css);
-@import url(../blocks/cards/__like/cards__like.css);
-@import url(../blocks/cards/__like/_active/cards__like_active.css);
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__about/card__about.css);
+@import url(../blocks/card/__name/card__name.css);
+@import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__like/_active/card__like_active.css);
 
 /* Подключение блока footer */
 

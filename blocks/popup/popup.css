@@ -2,12 +2,21 @@
     margin: 0 auto;
     display: none;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
+    align-items: center;
     position: fixed;
+    gap: 8px;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     background-color: rgba(0,0,0,0.5);
+}
+
+
+@media screen and (max-width:524px) {
+    .popup {
+        gap: 16px;
+    }
 }
 
