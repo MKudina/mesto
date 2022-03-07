@@ -13,7 +13,7 @@
     transition: opacity .5s linear;
     position: absolute;
     top: calc(50% - 205px);
-    left: calc(50% + 223px );
+    left: calc(50% + 222px );
 }
 
 .popup__close-button:hover {
@@ -27,6 +27,6 @@
         margin: 0;
         background-size: 20px;
         top: calc(50% - 197px);
-        left: calc(50% + 121px);
+        left: calc(50% + 120px);
     }
 }

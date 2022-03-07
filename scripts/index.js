@@ -10,7 +10,6 @@ let inputName = popup.querySelector('.popup__input_type_name');
 let inputAbout = popup.querySelector('.popup__input_type_about');
 
 function openPopup() {
-    console.log(popup);
     inputName.value = profileName.textContent;
     inputAbout.value = profileAbout.textContent;
     popup.classList.add('popup_opened');
