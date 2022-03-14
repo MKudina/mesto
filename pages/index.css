@@ -58,3 +58,14 @@
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+
+/* Подключение блока popup-add-card */
+
+@import url(../blocks/popup-add-card/popup-add-card.css);
+@import url(../blocks/popup-add-card/_opened/popup-add-card_opened.css);
+@import url(../blocks/popup-add-card/__close-button/popup-add-card__close-button.css);
+@import url(../blocks/popup-add-card/__container/popup-add-card__container.css);
+@import url(../blocks/popup-add-card/__title/popup-add-card__title.css);
+@import url(../blocks/popup-add-card/__form/popup-add-card__form.css);
+@import url(../blocks/popup-add-card/__input/popup-add-card__input.css);
+@import url(../blocks/popup-add-card/__submit/popup-add-card__submit.css);

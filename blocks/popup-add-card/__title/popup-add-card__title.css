@@ -1,4 +1,4 @@
-.popup__title {
+.popup-add-card__title {
     width: 358px;
     margin: 34px 0 48px 0;
     font-style: normal;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width:524px) {
-    .popup__title {
+    .popup-add-card__title {
         width: 238px;
         font-size: 18px;
         line-height: 22px;
