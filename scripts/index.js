@@ -31,6 +31,7 @@ const profileName = profile.querySelector('.profile__name');
 const profileAbout = profile.querySelector('.profile__about');
 
 //popups
+const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_profile');
 const popupAddCard = document.querySelector('.popup_add-card');
 const popupViewImage = document.querySelector('.popup_view-image');
@@ -52,8 +53,8 @@ const inputNameAddCard = popupAddCard.querySelector('.popup__input_type_name-ima
 const inputLinkAddCard = popupAddCard.querySelector('.popup__input_type_link');
 
 //popups form
-const formPopup = popupEditProfile.querySelector('.popup__form');
-const addCardButton = popupAddCard.querySelector('.popup__form');
+const formPopupProfile = popupEditProfile.querySelector('.popup__form');
+const formPopupAddCard = popupAddCard.querySelector('.popup__form');
 
 //popupViewImage
 const popupImage = popupViewImage.querySelector('.popup__view-image');
@@ -65,22 +66,27 @@ const cardsList = document.querySelector('.cards');
 
 //functions
 
-const togglePopup = function (popup) {
-    popup.classList.toggle ('popup_opened');
+function popupOpen (popup) {
+  popup.classList.add ('popup_opened');
+}
+
+function popupClose (popup) {
+  popup.classList.remove('popup_opened');
 }
 
 function editProfile (evn) {
     evn.preventDefault();
     profileName.textContent = inputNameProfile.value;
     profileAbout.textContent = inputAboutProfile.value;
-    togglePopup (popupEditProfile);
+    popupClose (popupEditProfile);
 }
 
 function createCard (data) {
   const card = cardsList.content.firstElementChild.cloneNode(true);
+  const cardImage = card.querySelector('.card__image');
   const imageName = card.querySelector('.card__name').textContent = data.name;
-  const imageAlt = card.querySelector('.card__image').alt = `Карточка ${data.name}`;
-  const imagelink = card.querySelector('.card__image').src = data.link;
+  cardImage.alt = `Карточка ${data.name}`;
+  cardImage.src = data.link;
   card.querySelector('.card__like').addEventListener('click', (evn) => {
     evn.target.classList.toggle('card__like_active');
   });
@@ -88,7 +94,7 @@ function createCard (data) {
     evn.target.closest('.card').remove();
   });
    card.querySelector('.card__image').addEventListener('click', () => {
-     viewImage(imageName, imageAlt, imagelink);
+     viewImage(imageName, cardImage);
    });
   return card;
 }
@@ -98,11 +104,11 @@ function renderCard (data) {
   cardsList.prepend(cardElement);
 }
 
-function viewImage(imageName, imageAlt, imagelink) {
-  popupImage.src = imagelink;
-  popupImage.alt = imageAlt;
+function viewImage(imageName, cardImage) {
+  popupImage.src = cardImage.src;
+  popupImage.alt = cardImage.alt;
   popupTitle.textContent = imageName;
-  togglePopup (popupViewImage);
+  popupOpen (popupViewImage);
 }
 
 function addCard (evn) {
@@ -112,7 +118,7 @@ function addCard (evn) {
     link:`${inputLinkAddCard.value}`
   });
   evn.currentTarget.reset();
-  togglePopup (popupAddCard);
+  popupClose (popupAddCard);
 }
 
 //Events
@@ -120,26 +126,23 @@ function addCard (evn) {
 popupProfileOpen.addEventListener('click', () => {
     inputNameProfile.value = profileName.textContent;
     inputAboutProfile.value = profileAbout.textContent;
-    togglePopup (popupEditProfile);
+    popupOpen (popupEditProfile);
 });
 
 popupAddCardOpen.addEventListener('click', () => {
-    togglePopup (popupAddCard);
+    popupOpen (popupAddCard);
 });
 
-popupEditProfileClose.addEventListener('click', () => {
-    togglePopup (popupEditProfile);
-});
+popups.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup__close-button')) {
+        popupClose (popup)
+      }
+  })
+}) 
 
-popupAddCardClose.addEventListener('click', () => {
-    togglePopup (popupAddCard);
-});
-
-popupViewImageClose.addEventListener('click', () => {
-  togglePopup (popupViewImage);
-})
-formPopup.addEventListener('submit', editProfile);
-addCardButton.addEventListener('submit', addCard);
+formPopupProfile.addEventListener('submit', editProfile);
+formPopupAddCard.addEventListener('submit', addCard);
 
 initialCards.map(renderCard);
 
