@@ -66,11 +66,11 @@ const cardsList = document.querySelector('.cards');
 
 //functions
 
-function popupOpen (popup) {
+function openPopup (popup) {
   popup.classList.add ('popup_opened');
 }
 
-function popupClose (popup) {
+function closePopup (popup) {
   popup.classList.remove('popup_opened');
 }
 
@@ -78,7 +78,7 @@ function editProfile (evn) {
     evn.preventDefault();
     profileName.textContent = inputNameProfile.value;
     profileAbout.textContent = inputAboutProfile.value;
-    popupClose (popupEditProfile);
+    closePopup (popupEditProfile);
 }
 
 function createCard (data) {
@@ -108,7 +108,7 @@ function viewImage(imageName, cardImage) {
   popupImage.src = cardImage.src;
   popupImage.alt = cardImage.alt;
   popupTitle.textContent = imageName;
-  popupOpen (popupViewImage);
+  openPopup (popupViewImage);
 }
 
 function addCard (evn) {
@@ -118,7 +118,7 @@ function addCard (evn) {
     link:`${inputLinkAddCard.value}`
   });
   evn.currentTarget.reset();
-  popupClose (popupAddCard);
+  closePopup (popupAddCard);
 }
 
 //Events
@@ -126,17 +126,17 @@ function addCard (evn) {
 popupProfileOpen.addEventListener('click', () => {
     inputNameProfile.value = profileName.textContent;
     inputAboutProfile.value = profileAbout.textContent;
-    popupOpen (popupEditProfile);
+    openPopup (popupEditProfile);
 });
 
 popupAddCardOpen.addEventListener('click', () => {
-    popupOpen (popupAddCard);
+    openPopup (popupAddCard);
 });
 
 popups.forEach((popup) => {
   popup.addEventListener('click', (evt) => {
       if (evt.target.classList.contains('popup__close-button')) {
-        popupClose (popup)
+        closePopup (popup)
       }
   })
 }) 
