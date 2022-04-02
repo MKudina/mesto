@@ -135,9 +135,14 @@ popupAddCardOpen.addEventListener('click', () => {
 
 popups.forEach((popup) => {
   popup.addEventListener('click', (evt) => {
-      if (evt.target.classList.contains('popup__close-button') || evt.target.classList.contains('popup')) {
-        closePopup (popup)
-      }
+    if (evt.target.classList.contains('popup__close-button') || evt.target.classList.contains('popup')) {
+      closePopup (popup)
+    }
+  });
+  document.addEventListener('keyup', (evt) => {
+    if (evt.key === 'Escape') {
+      closePopup (popup);
+    }
   });
 });
 
