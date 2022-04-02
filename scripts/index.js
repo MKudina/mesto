@@ -141,16 +141,6 @@ popups.forEach((popup) => {
   });
 });
 
-
-
-popups.forEach((popup) => {
-  popup.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup')){
-      closePopup (popup)
-    }
-  });
-});
-
 formPopupProfile.addEventListener('submit', editProfile);
 formPopupAddCard.addEventListener('submit', addCard);
 
