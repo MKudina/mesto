@@ -67,11 +67,21 @@ const cardsList = document.querySelector('.cards');
 //functions
 
 function openPopup (popup) {
+  enableValidation(popupValidation); 
   popup.classList.add ('popup_opened');
+  document.addEventListener('keyup', closePopupByEsc);
 };
 
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keyup', closePopupByEsc);
+};
+
+function closePopupByEsc (evt){
+  if (evt.key === 'Escape'){
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
 };
 
 function editProfile (evn) {
@@ -82,7 +92,7 @@ function editProfile (evn) {
 };
 
 function createCard (data) {
-  const card = cardsList.content.firstElementChild.cloneNode(true);
+  const card = cardsList.content.cloneNode(true);
   const cardImage = card.querySelector('.card__image');
   const imageName = card.querySelector('.card__name').textContent = data.name;
   cardImage.alt = `Карточка ${data.name}`;
@@ -117,8 +127,8 @@ function addCard (evn) {
     name:`${inputNameAddCard.value}`,
     link:`${inputLinkAddCard.value}`
   });
-  evn.currentTarget.reset();
   closePopup (popupAddCard);
+  formPopupAddCard.reset();
 };
 
 //Events
@@ -139,20 +149,14 @@ popups.forEach((popup) => {
       closePopup (popup)
     }
   });
-  document.addEventListener('keyup', (evt) => {
-    if (evt.key === 'Escape') {
-      closePopup (popup);
-    }
-  });
+  // document.addEventListener('keyup', (evt) => {
+  //   if (evt.key === 'Escape') {
+  //     closePopup (popup);
+  //   }
+  // });
 });
 
 formPopupProfile.addEventListener('submit', editProfile);
 formPopupAddCard.addEventListener('submit', addCard);
 
 initialCards.map(renderCard);
-
-
-
-
-
-
