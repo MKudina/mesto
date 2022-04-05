@@ -42,8 +42,8 @@ const setEventListeners = ({formSelector, inputSelector, submitButtonSelector, i
 };
 
 const hasInvalidInput = (inputList) => {
-    return inputList.some((inputElement) => {
-        return !inputElement.validity.valid;
+    return inputList.some((inputSelector) => {
+        return !inputSelector.validity.valid;
     });
 };
 
@@ -67,4 +67,4 @@ const enableValidation = ({formSelector, ...rest}) => {
     });
 };
 
-
+enableValidation(popupValidation); 

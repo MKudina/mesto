@@ -63,11 +63,9 @@ const popupTitle = popupViewImage.querySelector('.popup__view-title');
 //cardsList
 const cardsList = document.querySelector('.cards');
 
-
 //functions
 
 function openPopup (popup) {
-  enableValidation(popupValidation); 
   popup.classList.add ('popup_opened');
   document.addEventListener('keyup', closePopupByEsc);
 };
@@ -129,13 +127,24 @@ function addCard (evn) {
   });
   closePopup (popupAddCard);
   formPopupAddCard.reset();
+  disabledPopupSubmit ();
 };
+
+function disabledPopupSubmit (){
+  const PopupSubmit = formPopupAddCard.querySelector('.popup__submit');
+  PopupSubmit.classList.add('popup__submit_inactive');
+  PopupSubmit.setAttribute('disabled', 'disabled');
+};
+
+function popupInputValue () {
+  inputNameProfile.value = profileName.textContent;
+  inputAboutProfile.value = profileAbout.textContent;
+}
 
 //Events
 
 popupProfileOpen.addEventListener('click', () => {
-    inputNameProfile.value = profileName.textContent;
-    inputAboutProfile.value = profileAbout.textContent;
+    popupInputValue();
     openPopup (popupEditProfile);
 });
 
@@ -149,14 +158,10 @@ popups.forEach((popup) => {
       closePopup (popup)
     }
   });
-  // document.addEventListener('keyup', (evt) => {
-  //   if (evt.key === 'Escape') {
-  //     closePopup (popup);
-  //   }
-  // });
 });
 
 formPopupProfile.addEventListener('submit', editProfile);
 formPopupAddCard.addEventListener('submit', addCard);
 
-initialCards.map(renderCard);
+initialCards.forEach(renderCard);
+popupInputValue();
