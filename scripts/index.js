@@ -31,6 +31,9 @@ const formPopupAddCard = popupAddCard.querySelector('.popup__form');
 //cardsList
 const cardsList = document.querySelector('.cards');
 
+//popupSubmit
+const popupSubmit = formPopupAddCard.querySelector('.popup__submit');
+
 //popupSelectors
 const popupSelectors = {
   inputSelector: '.popup__input',
@@ -50,12 +53,6 @@ function editProfile (evn) {
     profileName.textContent = inputNameProfile.value;
     profileAbout.textContent = inputAboutProfile.value;
     closePopup (popupEditProfile);
-};
-
-function disabledPopupSubmit (){
-  const PopupSubmit = formPopupAddCard.querySelector('.popup__submit');
-  PopupSubmit.classList.add('popup__submit_inactive');
-  PopupSubmit.setAttribute('disabled', 'disabled');
 };
 
 function popupInputValue () {
@@ -105,12 +102,10 @@ formPopupAddCard.addEventListener('submit', addCard);
 popupInputValue();
 
 initialCards.forEach((item) => {
-  const card = new Card(item, '.cards-template_type_default');
-  const cardElement = card.generateCard();
-
-  cardsList.prepend(cardElement);
+  renderCard(item);
 });
 
 validationAddCard.enableValidation();
+validationAddCard.toggleButtonState();
 validationProfileEdit.enableValidation();
 
