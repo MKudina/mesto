@@ -31,9 +31,6 @@ const formPopupAddCard = popupAddCard.querySelector('.popup__form');
 //cardsList
 const cardsList = document.querySelector('.cards');
 
-//popupSubmit
-const popupSubmit = formPopupAddCard.querySelector('.popup__submit');
-
 //popupSelectors
 const popupSelectors = {
   inputSelector: '.popup__input',
@@ -74,7 +71,7 @@ function addCard (evn) {
   });
   closePopup (popupAddCard);
   formPopupAddCard.reset();
-  disabledPopupSubmit ();
+  validationAddCard.toggleButtonState();
 };
 
 //Events
@@ -99,13 +96,10 @@ popups.forEach((popup) => {
 formPopupProfile.addEventListener('submit', editProfile);
 formPopupAddCard.addEventListener('submit', addCard);
 
-popupInputValue();
-
 initialCards.forEach((item) => {
   renderCard(item);
 });
 
 validationAddCard.enableValidation();
-validationAddCard.toggleButtonState();
 validationProfileEdit.enableValidation();
 
