@@ -1,10 +1,9 @@
-import { openPopup } from "./utils.js";
-
 export class Card {
-    constructor(data, cardSelector){
+    constructor({data, handleCardClick}, cardSelector){
         this._link = data.link;
         this._name = data.name;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate(){
@@ -44,7 +43,7 @@ export class Card {
 
     _eventViewCard(){
         this._element.querySelector('.card__image').addEventListener('click', () => {
-            this._handleViewCard();
+            this._handleCardClick({name: this._name, link: this._link});
         });
     }
 
@@ -55,17 +54,6 @@ export class Card {
     _handleDeleteCard(){
         this._element.remove();
     }
-
-    _handleViewCard(){
-        const popupViewImage = document.querySelector('.popup_view-image');
-        const popupImage = popupViewImage.querySelector('.popup__view-image');
-        const popupTitle = popupViewImage.querySelector('.popup__view-title');
-        popupImage.src = this._link;
-        popupImage.alt = `Карточка ${this._name}`;
-        popupTitle.textContent =  this._name;
-        openPopup (popupViewImage);
-    }
-
 }
 
 
