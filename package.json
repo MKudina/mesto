@@ -4,7 +4,7 @@
   "description": "Проект о создании своего профиля, с карточками из разных мест мира.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack",
     "dev": "webpack serve"
   },
   "repository": {
