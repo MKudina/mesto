@@ -23,7 +23,7 @@ const popupAddCardForm = new PopupWithForm ({handleFormSubmit: (inputsValues) =>
 '.popup_add-card')
 
 function createCard (data, cardSelector) {
-  const card = new Card({data, handleCardClick:()=>{popupWithImage.openViewImage}}, cardSelector);
+  const card = new Card({data, handleCardClick:()=>{popupWithImage.open(data)}}, cardSelector);
   const cardElement = card.generateCard();
   return cardElement;
 }

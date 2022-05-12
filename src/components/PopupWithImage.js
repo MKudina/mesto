@@ -7,7 +7,7 @@ export class PopupWithImage extends Popup{
         this._title = this._popup.querySelector('.popup__view-title');
     }
 
-    openViewImage({name, link}){
+    open({name, link}){
         this._title.textContent = name;
         this._image.alt = name
         this._image.src = link;

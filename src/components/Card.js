@@ -20,11 +20,11 @@ export class Card {
         this._element = this._getTemplate();
         this._eventLike();
         this._eventDeleteCard();
-        this._eventViewCard()
-        this._element.querySelector('.card__image').src = this._link;
-        this._element.querySelector('.card__image').alt = this._name;
+        this._cardImage = this._element.querySelector('.card__image')
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._name;
         this._element.querySelector('.card__name').textContent = this._name;
-
+        this._eventViewCard()
         return this._element;
     }
 
@@ -42,7 +42,7 @@ export class Card {
 
 
     _eventViewCard(){
-        this._element.querySelector('.card__image').addEventListener('click', () => {
+        this._cardImage.addEventListener('click', () => {
             this._handleCardClick({name: this._name, link: this._link});
         });
     }
