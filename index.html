@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+<script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+<body class="background-page">
+  <div class="page">
+
+    <header class="header">
+      <img src="bbe2a6eafac19c3d031c.svg" class="header__logo" alt="Лого">
+    </header>
+
+    <main class="content">
+
+      <section class="profile">
+        <img src="6163c2039d1f0eb8d7ca.jpg" class="profile__avatar" alt="Аватар">
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__edit-button" aria-label="Изменить профиль"></button>
+          <p class="profile__about">Исследователь океана</p>
+        </div>
+        <button type="button" class="profile__add-button" aria-label="Добавить карточку"></button>
+      </section>
+
+      <section>
+        <template class="cards cards-template_type_default">
+          <li class="card">
+            <img src="#" class="card__image" alt="">
+            <button type="button" class="card__delete-button" aria-label="удалить карточку">
+              <div class="card__delete-icon card__delete-icon_position_top"></div> 
+              <div class="card__delete-icon card__delete-icon_position_bottom"></div>
+            </button>
+            <div class="card__about">
+              <h2 class="card__name"></h2>
+              <button type="button" class="card__like" aria-label="Поставить лайк"></button>
+            </div>
+          </li>
+        </template>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+
+    <div class="popup popup_profile">
+      <div class="popup__container">
+        <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" name="edit-profile-info" novalidate>
+          <input type="text" class="popup__input popup__input_type_name" id="name-input" 
+          name="name" minlength="2" maxlength="40" placeholder="Имя профиля" required>
+          <span class="popup__input-error name-input-error"></span>
+          <input type="text" class="popup__input popup__input_type_about" id="about-input" 
+          name="about" minlength="2" maxlength="200" placeholder="О профиле" required>
+          <span class="popup__input-error about-input-error"></span>
+          <button type="submit" class="popup__submit" aria-label="Сохранить">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_add-card">
+      <div class="popup__container">
+        <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form" name="add-card" novalidate>
+          <input type="text" class="popup__input popup__input_type_name-image" id="name-image-input" 
+          name="name" placeholder="Имя карточки" minlength="2" maxlength="30" required>
+          <span class="popup__input-error name-image-input-error"></span>
+          <input type="url" class="popup__input popup__input_type_link" id="link-input" 
+          name="link" placeholder="Ссылка карточки" required>
+          <span class="popup__input-error link-input-error"></span>
+          <button type="submit" class="popup__submit" aria-label="Создать">Создать</button>
+        </form>
+      </div>
+  </div>
+  </div>
+
+  <div class="popup popup_view-image">
+    <div class="popup__view-container">
+      <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
+      <img src="#" class="popup__view-image" alt="">
+      <h2 class="popup__view-title"></h2>
+    </div>
+  </div>
+</body>
+</html>
