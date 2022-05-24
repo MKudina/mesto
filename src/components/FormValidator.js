@@ -11,11 +11,11 @@ export class FormValidator {
     }
 
     _setEventListeners (){
-        this.toggleButtonState();
+        this._toggleButtonState();
         this._inputList.forEach((inputSelector) => {
             inputSelector.addEventListener('input', () => {
                 this._checkInputValidity(inputSelector);
-                this.toggleButtonState();
+                this._toggleButtonState();
             })
         }); 
     }
@@ -42,7 +42,14 @@ export class FormValidator {
         errorElement.textContent = '';
     }
 
-    toggleButtonState(){
+    resetValidation(){
+        this._toggleButtonState();
+        this._inputList.forEach((inputElement) => {
+          this._hideError(inputElement) 
+        });
+    }
+
+    _toggleButtonState(){
         if (this._hasInvalidInput()) {
             this._buttonElement.classList.add(this._selectors.inactiveSubmitButtonClass);
             this._buttonElement.setAttribute('disabled', 'disabled');

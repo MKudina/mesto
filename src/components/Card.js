@@ -1,11 +1,11 @@
 export class Card {
-    constructor({data, user, handleCardClick, handleDeleteCard, handleLikeClick}, cardSelector){
+    constructor({data, userId, handleCardClick, handleDeleteCard, handleLikeClick}, cardSelector){
         this._link = data.link;
         this._name = data.name;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;     
         this._handleDeleteCard = handleDeleteCard;
-        this._user = user;   
+        this._userId = userId;   
         this._ownerId = data.owner._id;
         this._cardId = data._id;
         this._handleLikeClick = handleLikeClick;
@@ -37,7 +37,7 @@ export class Card {
         if(this.likes.length > 0){
             this._setLike()
         }
-        if(this._ownerId !== this._user){
+        if(this._ownerId !== this._userId){
             this._deleteIcon.remove();
         }
 
@@ -71,7 +71,7 @@ export class Card {
     //Handle like
 
     checkLike() {
-        return this.likes.some(item => item._id === this._user)
+        return this.likes.some(item => item._id === this._userId)
     }
 
     _setLike(){

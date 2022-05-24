@@ -13,14 +13,15 @@
 
 
   //ID = 6400895500d2623621312988
-
+  
+  let userId
+  
 
   const validationAddCard = new FormValidator (popupInputSelectors, formPopupAddCard);
   const validationProfileEdit = new FormValidator (popupInputSelectors, formPopupProfile);
   const validationProfieEditAvatar = new FormValidator (popupInputSelectors, formPopupProfileAvatar);
   const userInfo = new UserInfo ({selectorName: '.profile__name', selectorAbout: '.profile__about',
-  selectorAvatar: '.profile__avatar'});
-
+  selectorAvatar: '.profile__avatar'}, userId);
   const popupWithImage = new PopupWithImage ('.popup_view-image');
 
   const api = new Api ({
@@ -39,7 +40,7 @@
         const card = createCard(
           {name: responseData.name, link: responseData.link, owner: responseData.owner, 
             _id: responseData._id, likes: responseData.likes},  
-          '6400895500d2623621312988', '.cards-template_type_default')
+            userId, '.cards-template_type_default')
         section.addItem(card)
       })
       .catch((err) => {
@@ -47,6 +48,7 @@
       })
       .finally(() => {
         popupProfileForm.renderLoanding(false, 'Создать');
+        popupAddCardForm.close();
       })
   }},
   '.popup_add-card')
@@ -54,14 +56,14 @@
   // 1
 
   const section = new Section( {renderer: (data) =>{
-    const card = createCard(data, '6400895500d2623621312988', '.cards-template_type_default');
+    const card = createCard(data, userId, '.cards-template_type_default');
     section.addItem(card);
   }}, '.cards-template_type_default')
 
   // 2
 
-  function createCard (data, user, cardSelector) {
-    const card = new Card({data, user,  
+  function createCard (data, userId, cardSelector) {
+    const card = new Card({data, userId,  
       handleCardClick: () => popupWithImage.open(data),
       handleDeleteCard: (card) => deleteCard.open(card),
       handleLikeClick: (card) => {
@@ -96,12 +98,15 @@
         .catch((err) => {
           console.log(err)
         })
+        .finally(() => {
+          deleteCard.close();
+        })
     }
   },
   '.popup_submit')
 
   popupAddCardOpenButton.addEventListener('click', () => {
-    validationAddCard.toggleButtonState();
+    validationAddCard.resetValidation();
     popupAddCardForm.open();
   })
 
@@ -118,6 +123,7 @@
       })
       .finally(() => {
         popupProfileForm.renderLoanding(false, 'Сохранить');
+        popupProfileForm.close();
       })
   }}, '.popup_profile')
 
@@ -126,34 +132,40 @@ const popupProfileAvatarForm = new PopupWithForm ({handleFormSubmit: (inputValue
   api.editAvatar(inputValue)
     .then((responseData) => {
       userInfo.setAvatar(responseData);
+      close();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       popupProfileAvatarForm.renderLoanding(false, 'Сохранить');
+      popupProfileAvatarForm.close();
     })
 }}, '.popup_edit-avatar')
 
 popupProfileOpenButton.addEventListener('click', () => {
-    const userInfomation = userInfo.getUserInfo();
-    const userName = userInfomation.name;
-    const userAbout = userInfomation.about;
-    inputNameProfile.value = userName;
-    inputAboutProfile.value = userAbout;
-    popupProfileForm.open();
+  validationProfileEdit.resetValidation();
+  const userInfomation = userInfo.getUserInfo();
+  const userName = userInfomation.name;
+  const userAbout = userInfomation.about;
+  inputNameProfile.value = userName;
+  inputAboutProfile.value = userAbout;
+  popupProfileForm.open();
     
 });
 
 popupProfileAvatarOpenButton.addEventListener('click', () => {
+  validationProfieEditAvatar.resetValidation();
   const avatarInformation = userInfo.getUserInfo();
   const avatarLink = avatarInformation.avatarLink;
   inputAvatarProfile.value = avatarLink;
   popupProfileAvatarForm.open();
 })
 
+
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then((responseDataArray) => {
+    userId = responseDataArray[0]._id;
     userInfo.setUserInfo(responseDataArray[0]);
     userInfo.setAvatar(responseDataArray[0]);
     section.renderItems(responseDataArray[1].reverse());
