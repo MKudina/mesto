@@ -15,7 +15,9 @@
     <main class="content">
 
       <section class="profile">
-        <img src="<%=require('./images/avatar.jpg')%>" class="profile__avatar" alt="Аватар">
+        <button type="button" class="profile__edit-avatar-button">
+          <img src="<%=require('./images/avatar.jpg')%>" class="profile__avatar" alt="Аватар">
+        </button>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button type="button" class="profile__edit-button" aria-label="Изменить профиль"></button>
@@ -34,7 +36,10 @@
             </button>
             <div class="card__about">
               <h2 class="card__name"></h2>
-              <button type="button" class="card__like" aria-label="Поставить лайк"></button>
+              <div class="card__likes">
+                <button type="button" class="card__like" aria-label="Поставить лайк"></button>
+                <p class="card__number-of-likes"></p>
+              </div>
             </div>
           </li>
         </template>
@@ -75,14 +80,38 @@
           <button type="submit" class="popup__submit" aria-label="Создать">Создать</button>
         </form>
       </div>
-  </div>
-  </div>
+    </div>
 
-  <div class="popup popup_view-image">
-    <div class="popup__view-container">
-      <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
-      <img src="#" class="popup__view-image" alt="">
-      <h2 class="popup__view-title"></h2>
+    <div class="popup popup_edit-avatar">
+      <div class="popup__container">
+        <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="popup__form" name="edit-avatar" novalidate>
+          <input type="url" class="popup__input popup__input_type_link" id="link-input" 
+          name="avatar" placeholder="Ссылка аватара" required>
+          <span class="popup__input-error link-input-error"></span>
+          <button type="submit" class="popup__submit" aria-label="Сохранить">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  
+
+    <div class="popup popup_view-image">
+      <div class="popup__view-container">
+        <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
+        <img src="#" class="popup__view-image" alt="">
+        <h2 class="popup__view-title"></h2>
+      </div>
+    </div>
+
+    <div class="popup popup_submit">
+      <div class="popup__container">
+        <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <form class="popup__form" name="submit" novalidate>
+          <button type="submit" class="popup__submit" aria-label="Подтвердить">Да</button>
+        </form>
+      </div>
     </div>
   </div>
 </body>
