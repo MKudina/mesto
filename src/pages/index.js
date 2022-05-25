@@ -94,12 +94,12 @@
   const deleteCard = new PopupWithSubmit({
     handleFormSubmit: () => {
       api.deleteCard(deleteCard.card._cardId)
-        .then(() => deleteCard.card.deleteCard())
+        .then(() => {
+          deleteCard.card.deleteCard();
+          deleteCard.close();
+        })
         .catch((err) => {
           console.log(err)
-        })
-        .finally(() => {
-          deleteCard.close();
         })
     }
   },
