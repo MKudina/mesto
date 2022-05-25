@@ -42,13 +42,13 @@
             _id: responseData._id, likes: responseData.likes},  
             userId, '.cards-template_type_default')
         section.addItem(card)
+        popupAddCardForm.close()
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         popupProfileForm.renderLoanding(false, 'Создать');
-        popupAddCardForm.close();
       })
   }},
   '.popup_add-card')
@@ -117,13 +117,13 @@
     api.editProfile(inputValues)
       .then((responseData) => {
         userInfo.setUserInfo(responseData)
+        popupProfileForm.close()
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         popupProfileForm.renderLoanding(false, 'Сохранить');
-        popupProfileForm.close();
       })
   }}, '.popup_profile')
 
@@ -132,14 +132,13 @@ const popupProfileAvatarForm = new PopupWithForm ({handleFormSubmit: (inputValue
   api.editAvatar(inputValue)
     .then((responseData) => {
       userInfo.setAvatar(responseData);
-      close();
+      popupProfileAvatarForm.close()
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       popupProfileAvatarForm.renderLoanding(false, 'Сохранить');
-      popupProfileAvatarForm.close();
     })
 }}, '.popup_edit-avatar')
 
